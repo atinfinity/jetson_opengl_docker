@@ -1,7 +1,7 @@
 # jetson_opengl_docker
 
 ## Introduction
-This is a Dockerfile launch OpenGL application on NVIDIA Jetson devices.
+This is a Dockerfile to launch OpenGL application on NVIDIA Jetson devices.
 
 ## Requirements
 * Docker
