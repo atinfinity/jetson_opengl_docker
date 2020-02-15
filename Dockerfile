@@ -33,6 +33,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         xdg-user-dirs \
         xsel \
         mesa-utils \
+        libglu1-mesa-dev \
+        libgles2-mesa-dev \
+        freeglut3-dev \
         dirmngr \
         gpg-agent \
         && \
@@ -65,10 +68,18 @@ RUN git clone -b v1.3.0 https://github.com/NVIDIA/libglvnd.git && \
     ln -s /usr/lib/aarch64-linux-gnu/tegra-egl/ld.so.conf /etc/ld.so.conf.d/aarch64-linux-gnu_EGL.conf && \
     ldconfig && \
     cd /usr/lib/aarch64-linux-gnu && \
+    rm libGL.so && \
+    rm libGLX.so && \
+    rm libEGL.so && \
+    rm libGLESv2.so && \
     ln -s /usr/local/lib/aarch64-linux-gnu/libGL.so libGL.so && \
     ln -s /usr/local/lib/aarch64-linux-gnu/libGLX.so libGLX.so && \
     ln -s /usr/local/lib/aarch64-linux-gnu/libEGL.so libEGL.so && \
+    ln -s /usr/local/lib/aarch64-linux-gnu/libGLESv2.so libGLESv2.so && \
     rm -rf /opt/libglvnd
+
+RUN mkdir -p /usr/local/share/glvnd/egl_vendor.d && \
+    echo '{ "file_format_version" : "1.0.0", "ICD" : { "library_path" : "libEGL_nvidia.so.0" } }' > /usr/local/share/glvnd/egl_vendor.d/10_nvidia.json
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
