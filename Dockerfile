@@ -31,6 +31,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         dirmngr \
         gpg-agent \
         mesa-utils \
+        libglu1-mesa-dev \
+        libgles2-mesa-dev \
+        freeglut3-dev \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
