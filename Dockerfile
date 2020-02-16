@@ -83,6 +83,8 @@ RUN mkdir -p /usr/local/share/glvnd/egl_vendor.d && \
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
+SHELL ["/bin/bash", "-c"]
 RUN echo "export LD_LIBRARY_PATH=/usr/lib/aarch64-linux-gnu/tegra:/usr/lib/aarch64-linux-gnu/tegra-egl:$LD_LIBRARY_PATH" >> ~/.bashrc && \
     echo "export PATH=/usr/local/cuda/bin:$PATH" >> ~/.bashrc && \
-    echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH" >> ~/.bashrc
+    echo "export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH" >> ~/.bashrc && \
+    source ~/.bashrc
