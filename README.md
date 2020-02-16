@@ -12,7 +12,7 @@ And, this project has the following Dockerfile.
   - This Dockerfile uses [arm64v8/ubuntu:18.04](https://hub.docker.com/r/arm64v8/ubuntu/) as base Docker image.
 
 ## Requirements
-* Docker
+- Docker
 
 ## Preparation
 ### Build Docker image
